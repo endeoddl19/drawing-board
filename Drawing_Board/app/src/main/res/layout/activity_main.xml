@@ -55,7 +55,6 @@
             android:orientation="horizontal"
             android:gravity="center">
             <ImageButton
-                android:id="@+id/color_red"
                 android:onClick="paintClicked"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -64,7 +63,6 @@
                 android:background="#FF0000"
                 android:tag="#FF0000"/>
             <ImageButton
-                android:id="@+id/color_yellow"
                 android:onClick="paintClicked"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -72,7 +70,6 @@
                 android:background="#FFFF00"
                 android:tag="#FFFF00"/>
             <ImageButton
-                android:id="@+id/color_green"
                 android:onClick="paintClicked"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -80,7 +77,6 @@
                 android:background="#00FF00"
                 android:tag="#00FF00"/>
             <ImageButton
-                android:id="@+id/color_wblue"
                 android:onClick="paintClicked"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -88,7 +84,6 @@
                 android:background="#00FFFF"
                 android:tag="#00FFFF"/>
             <ImageButton
-                android:id="@+id/color_blue"
                 android:onClick="paintClicked"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -96,7 +91,6 @@
                 android:background="#0000FF"
                 android:tag="#0000FF"/>
             <ImageButton
-                android:id="@+id/color_purple"
                 android:onClick="paintClicked"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
