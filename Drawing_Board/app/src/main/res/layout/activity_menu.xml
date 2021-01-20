@@ -6,4 +6,55 @@
     android:layout_height="match_parent"
     tools:context=".Menu">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="25dp">
+
+        <LinearLayout
+            android:id="@id/search_linear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:layout_toRightOf="@id/create"
+            android:background="@drawable/roundbutton"
+            android:padding="5dp">
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight=".15"
+                android:layout_height="30dp"
+                android:src="@drawable/search"/>
+            <TextView
+                android:id="@id/search"
+                android:layout_width="0dp"
+                android:layout_weight=".85"
+                android:layout_height="match_parent"
+                android:textColor="#111111"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:hint="방 번호를 입력해주세요"
+                android:textColorHint="#888888"/>
+        </LinearLayout>
+        <Button
+            android:id="@+id/create"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/search_linear"
+            android:text="방 만들기"
+            android:backgroundTint="#FFFFFF"
+            android:layout_marginTop="10dp"
+            android:textSize="25sp"
+            android:textColor="#000000"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/create"
+            app:layoutManager="LinearLayoutManager"
+            tools:listitem="@layout/room_list" />
+
+
+    </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
