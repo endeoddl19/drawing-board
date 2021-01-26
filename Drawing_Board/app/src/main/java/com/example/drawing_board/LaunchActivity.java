@@ -15,7 +15,7 @@ public class LaunchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_launch);
 
         new Handler().postDelayed(()->{
-                startActivity(new Intent(this, MainActivity.class));
+                startActivity(new Intent(this, Menu.class));
                 finish();
             },splash);
     }

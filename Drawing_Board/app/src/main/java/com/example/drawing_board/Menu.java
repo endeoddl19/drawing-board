@@ -3,6 +3,7 @@ package com.example.drawing_board;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,6 +28,7 @@ public class Menu extends AppCompatActivity {
     private ArrayList<Integer> roomList;
     private TextView room_id, room_name, players;
     private ImageView key;
+    private LinearLayout room;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +37,19 @@ public class Menu extends AppCompatActivity {
         recyclerview = findViewById(R.id.room_list);
         recyclerview.setLayoutManager(layoutManager);
         recyclerview.setHasFixedSize(true);
-
         roomList = new ArrayList<>();
         recyclerview.setAdapter(adapter);
+
+        room = findViewById(R.id.room);
+        room_id = findViewById(R.id.room_id);
+        String str_room_id = room_id.toString();
+        room_name = findViewById(R.id.room_name);
+        String str_room_name = room_name.toString();
+        room.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            intent.putExtra("room_id",str_room_id);
+            intent.putExtra("room_name",str_room_name);
+        });
     }
 
 

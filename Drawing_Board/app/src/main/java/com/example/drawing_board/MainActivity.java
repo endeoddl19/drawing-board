@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.UUID;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private ImageButton currPaint, pancel,clear,erase,save;
     private DrawingView drawView;
+    private TextView word;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
