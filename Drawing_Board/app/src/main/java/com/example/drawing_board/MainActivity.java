@@ -111,4 +111,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             saveDialog.show();
         }
     }
+    
+    public void startgame(){
+
+    }
 }
