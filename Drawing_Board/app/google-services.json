@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "246076594878",
+    "project_id": "drawingboard-f754a",
+    "storage_bucket": "drawingboard-f754a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:246076594878:android:2c65d02d77a58da5ee5cef",
+        "android_client_info": {
+          "package_name": "com.example.drawing_board"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "246076594878-u4oti4ot35hqrjnqmqg4jqcdbm2lskei.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARBFbek833_HlkiG9pxIJLic8lhtn7Eyk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "246076594878-u4oti4ot35hqrjnqmqg4jqcdbm2lskei.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

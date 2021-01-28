@@ -48,13 +48,13 @@
             android:textColor="#000000"/>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/room_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/create"
-            app:layoutManager="LinearLayoutManager"
-            tools:listitem="@layout/room_list" />
-
-
+            android:scrollbars="vertical"
+            android:scrollbarFadeDuration="0"
+            android:scrollbarSize="5dp"/>
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

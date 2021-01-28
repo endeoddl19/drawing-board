@@ -10,25 +10,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 
 import java.util.ArrayList;
+import java.util.Dictionary;
 
 public class Menu extends AppCompatActivity {
 
     RecyclerView recyclerview;
-    RecyclerView.Adapter adapter;
+    private CustomAdapter adapter;
     RecyclerView.LayoutManager layoutManager;
-    private ArrayList<Integer> roomList;
     private TextView room_id, room_name, players;
     private ImageView key;
     private LinearLayout room;
+    private ArrayList<Room> roomList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +40,12 @@ public class Menu extends AppCompatActivity {
         recyclerview = findViewById(R.id.room_list);
         recyclerview.setLayoutManager(layoutManager);
         recyclerview.setHasFixedSize(true);
-        roomList = new ArrayList<>();
+        adapter = new CustomAdapter(roomList);
         recyclerview.setAdapter(adapter);
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerview.getContext(),
+                layoutManager.getLayoutDirection());
+        recyclerview.addItemDecoration(dividerItemDecoration);
 
         room = findViewById(R.id.room);
         room_id = findViewById(R.id.room_id);
@@ -50,18 +57,23 @@ public class Menu extends AppCompatActivity {
             intent.putExtra("room_id",str_room_id);
             intent.putExtra("room_name",str_room_name);
         });
+
+        Button buttonInsert = (Button)findViewById(R.id.create);
+        buttonInsert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //Room data = new Room(count+"","Apple" + count, "사과" + count);
+
+                //roomList.add(data); // RecyclerView의 마지막 줄에 삽입
+
+                adapter.notifyDataSetChanged();             }
+        });
     }
 
 
     public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
-        private ArrayList<Integer> localDataSet;
-        private TextView view;
-
-        /**
-         * Provide a reference to the type of views that you are using
-         * (custom ViewHolder).
-         */
         public class ViewHolder extends RecyclerView.ViewHolder {
 
             public ViewHolder(View view) {
@@ -78,10 +90,9 @@ public class Menu extends AppCompatActivity {
         }
 
         public CustomAdapter(ArrayList dataSet) {
-            localDataSet = dataSet;
+            roomList = dataSet;
         }
 
-        // Create new views (invoked by the layout manager)
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
             // Create a new view, which defines the UI of the list item
@@ -93,17 +104,14 @@ public class Menu extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(ViewHolder viewHolder, final int position) {
-
-            // Get element from your dataset at this position and replace the
-            // contents of the view with that element
-            viewHolder.getTextView(view).setText((CharSequence) localDataSet);
+            viewHolder.getTextView(room_id).setText(roomList.get(position).getRoom_id());
+            viewHolder.getTextView(room_name).setText(roomList.get(position).getRoom_name());
+            viewHolder.getTextView(players).setText(roomList.get(position).getPlayers());
         }
 
-        // Return the size of your dataset (invoked by the layout manager)
         @Override
         public int getItemCount() {
-            return localDataSet.size();
+            return roomList.size();
         }
     }
-
 }
