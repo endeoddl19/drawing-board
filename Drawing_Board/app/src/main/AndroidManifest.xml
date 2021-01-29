@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Drawing_Board">
-        <activity android:name=".Menu"></activity>
+        <activity android:name=".Create"></activity>
+        <activity android:name=".Menu" />
         <activity android:name=".LaunchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +24,7 @@
             tools:ignore="Instantiatable" />
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.Drawing_Board.NoActionBar"></activity>
+            android:theme="@style/Theme.Drawing_Board.NoActionBar" />
     </application>
 
 </manifest>

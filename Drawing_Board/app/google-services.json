@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "246076594878",
+    "firebase_url": "https://drawingboard-f754a-default-rtdb.firebaseio.com",
     "project_id": "drawingboard-f754a",
     "storage_bucket": "drawingboard-f754a.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "246076594878-t6o5kehsntd983g8e3lveghtvvhouh0q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.drawing_board",
+            "certificate_hash": "0bfcc4ce4705157e3f7cf3c70ac169e9cdb5ad18"
+          }
+        },
         {
           "client_id": "246076594878-u4oti4ot35hqrjnqmqg4jqcdbm2lskei.apps.googleusercontent.com",
           "client_type": 3

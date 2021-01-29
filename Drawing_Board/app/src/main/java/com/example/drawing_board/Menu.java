@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,98 +22,55 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.ArrayList;
 import java.util.Dictionary;
 
 public class Menu extends AppCompatActivity {
 
-    RecyclerView recyclerview;
-    private CustomAdapter adapter;
-    RecyclerView.LayoutManager layoutManager;
     private TextView room_id, room_name, players;
     private ImageView key;
     private LinearLayout room;
-    private ArrayList<Room> roomList;
+    private ArrayList<Room> mArrayList;
+    private CustomAdapter mAdapter;
+    DatabaseReference DB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        recyclerview = findViewById(R.id.room_list);
-        recyclerview.setLayoutManager(layoutManager);
-        recyclerview.setHasFixedSize(true);
-        adapter = new CustomAdapter(roomList);
-        recyclerview.setAdapter(adapter);
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.room_list);
+        LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLinearLayoutManager);
 
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerview.getContext(),
-                layoutManager.getLayoutDirection());
-        recyclerview.addItemDecoration(dividerItemDecoration);
+        mArrayList = new ArrayList<>();
+        mAdapter = new CustomAdapter( mArrayList);
+        mRecyclerView.setAdapter(mAdapter);
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mRecyclerView.getContext(),
+                mLinearLayoutManager.getOrientation());
+        mRecyclerView.addItemDecoration(dividerItemDecoration);
+
 
         room = findViewById(R.id.room);
         room_id = findViewById(R.id.room_id);
-        String str_room_id = room_id.toString();
+        //String str_room_id = room_id.getText().toString();
         room_name = findViewById(R.id.room_name);
-        String str_room_name = room_name.toString();
-        room.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            intent.putExtra("room_id",str_room_id);
-            intent.putExtra("room_name",str_room_name);
-        });
+        //String str_room_name = room_name.getText().toString();
+//        room.setOnClickListener(view -> {
+//            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//            //intent.putExtra("room_id",str_room_id);
+//            //intent.putExtra("room_name",str_room_name);
+//        });
 
         Button buttonInsert = (Button)findViewById(R.id.create);
         buttonInsert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //Room data = new Room(count+"","Apple" + count, "사과" + count);
-
-                //roomList.add(data); // RecyclerView의 마지막 줄에 삽입
-
-                adapter.notifyDataSetChanged();             }
+                Intent intent = new Intent(getApplicationContext(), Create.class);
+                startActivity(intent);
+                }
         });
-    }
-
-
-    public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
-
-        public class ViewHolder extends RecyclerView.ViewHolder {
-
-            public ViewHolder(View view) {
-                super(view);
-
-                room_id = (TextView) view.findViewById(R.id.room_id);
-                room_name = (TextView) view.findViewById(R.id.room_name);
-                players = (TextView) view.findViewById(R.id.players);
-            }
-
-            public TextView getTextView(TextView view) {
-                return view;
-            }
-        }
-
-        public CustomAdapter(ArrayList dataSet) {
-            roomList = dataSet;
-        }
-
-        @Override
-        public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-            // Create a new view, which defines the UI of the list item
-            View view = LayoutInflater.from(viewGroup.getContext())
-                    .inflate(R.layout.room_list, viewGroup, false);
-
-            return new ViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(ViewHolder viewHolder, final int position) {
-            viewHolder.getTextView(room_id).setText(roomList.get(position).getRoom_id());
-            viewHolder.getTextView(room_name).setText(roomList.get(position).getRoom_name());
-            viewHolder.getTextView(players).setText(roomList.get(position).getPlayers());
-        }
-
-        @Override
-        public int getItemCount() {
-            return roomList.size();
-        }
     }
 }
