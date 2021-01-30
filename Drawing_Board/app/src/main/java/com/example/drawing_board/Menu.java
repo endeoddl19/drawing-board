@@ -22,7 +22,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Dictionary;
@@ -35,6 +39,9 @@ public class Menu extends AppCompatActivity {
     private ArrayList<Room> mArrayList;
     private CustomAdapter mAdapter;
     DatabaseReference DB;
+    protected String roomname,player;
+    protected int roomid,roompwd;
+    protected boolean key_bl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +51,34 @@ public class Menu extends AppCompatActivity {
         LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
 
+        DB = FirebaseDatabase.getInstance().getReference("room");
+        DB.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                mArrayList.clear();
+                for(DataSnapshot dataSnapshot : snapshot.getChildren() ){
+                    roomid = (Integer) dataSnapshot.child("Room_id").getValue();
+                    roomname = (String) dataSnapshot.child("Room_name").getValue();
+                    player = (String) dataSnapshot.child("Players").getValue();
+                    key_bl = (Boolean) dataSnapshot.child("Key").getValue();
+                    roompwd = (Integer) dataSnapshot.child("Password").getValue();
+
+                    Room newroom = new Room(roomid,roomname,player,key_bl,roompwd);
+                    mArrayList.add(newroom);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        room = findViewById(R.id.room);
+        room_id = findViewById(R.id.room_id);
+        room_name = findViewById(R.id.room_name);
+
         mArrayList = new ArrayList<>();
         mAdapter = new CustomAdapter( mArrayList);
         mRecyclerView.setAdapter(mAdapter);
@@ -51,18 +86,6 @@ public class Menu extends AppCompatActivity {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mRecyclerView.getContext(),
                 mLinearLayoutManager.getOrientation());
         mRecyclerView.addItemDecoration(dividerItemDecoration);
-
-
-        room = findViewById(R.id.room);
-        room_id = findViewById(R.id.room_id);
-        //String str_room_id = room_id.getText().toString();
-        room_name = findViewById(R.id.room_name);
-        //String str_room_name = room_name.getText().toString();
-//        room.setOnClickListener(view -> {
-//            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//            //intent.putExtra("room_id",str_room_id);
-//            //intent.putExtra("room_name",str_room_name);
-//        });
 
         Button buttonInsert = (Button)findViewById(R.id.create);
         buttonInsert.setOnClickListener(new View.OnClickListener() {

@@ -9,6 +9,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
+        android:padding="15dp"
         android:background="@android:color/transparent">
 
         <LinearLayout
@@ -27,16 +29,18 @@
                 android:gravity="center"
                 android:weightSum="1">
                 <TextView
+                    android:id="@+id/roomname_tv"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".4"
+                    android:layout_weight=".45"
                     android:fontFamily="@font/blackhansans_regular"
                     android:text="방 이름 : "
                     android:gravity="left|center_vertical"
                     android:textSize="35sp" />
                 <EditText
+                    android:id="@+id/roomname_et"
                     android:layout_width="0dp"
-                    android:layout_weight=".6"
+                    android:layout_weight=".55"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textSize="35sp" />
@@ -51,18 +55,19 @@
                 android:gravity="center"
                 android:weightSum="1">
                 <TextView
-                    android:id="@+id/room_pwd_insert"
+                    android:id="@+id/roompwd_tv"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".4"
+                    android:layout_weight=".45"
                     android:text="비밀번호 : "
                     android:gravity="left|center_vertical"
                     android:textSize="35sp"
                     android:fontFamily="@font/blackhansans_regular"/>
                 <EditText
+                    android:id="@+id/roompwd_et"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".6"
+                    android:layout_weight=".55"
                     android:gravity="center"
                     android:textSize="35sp"/>
             </LinearLayout>
@@ -74,6 +79,7 @@
                 android:weightSum="1"
                 android:layout_below="@id/roompwd">
                 <TextView
+                    android:id="@+id/players_tv"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight=".4"
@@ -88,6 +94,7 @@
                     android:text="4"
                     android:textSize="25sp"
                     android:fontFamily="@font/kanit_bold"
+                    android:layout_margin="3dp"
                     android:layout_weight=".15"/>
                 <Button
                     android:id="@+id/five_btn"
@@ -96,6 +103,7 @@
                     android:text="5"
                     android:textSize="25sp"
                     android:fontFamily="@font/kanit_bold"
+                    android:layout_margin="3dp"
                     android:layout_weight=".15"/>
                 <Button
                     android:id="@+id/six_btn"
@@ -104,6 +112,7 @@
                     android:text="6"
                     android:textSize="25sp"
                     android:fontFamily="@font/kanit_bold"
+                    android:layout_margin="3dp"
                     android:layout_weight=".15"/>
                 <Button
                     android:id="@+id/seven_btn"
@@ -112,6 +121,7 @@
                     android:text="7"
                     android:textSize="25sp"
                     android:fontFamily="@font/kanit_bold"
+                    android:layout_margin="3dp"
                     android:layout_weight=".15"/>
             </LinearLayout>
             <Button

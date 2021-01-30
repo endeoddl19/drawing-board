@@ -8,6 +8,14 @@ public class Room {
     private boolean Key;
     private int Password;
 
+    public Room(){
+        this.Room_id = 00000;
+        this.Room_name = "돌려돌려 그림판";
+        this.Players = "0 / 0";
+        this.Key = false;
+        this.Password = 0;
+    }
+
     public Room(int room_id, String room_name, String players, boolean key, int password) {
         this.Room_id = room_id;
         this.Room_name = room_name;
