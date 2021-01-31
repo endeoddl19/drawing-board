@@ -41,7 +41,7 @@ public class Menu extends AppCompatActivity {
     DatabaseReference DB;
     protected String roomname,player;
     protected int roomid,roompwd;
-    protected boolean key_bl;
+    protected boolean key_bool;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,10 +61,10 @@ public class Menu extends AppCompatActivity {
                     roomid = (Integer) dataSnapshot.child("Room_id").getValue();
                     roomname = (String) dataSnapshot.child("Room_name").getValue();
                     player = (String) dataSnapshot.child("Players").getValue();
-                    key_bl = (Boolean) dataSnapshot.child("Key").getValue();
+                    key_bool = (Boolean) dataSnapshot.child("Key").getValue();
                     roompwd = (Integer) dataSnapshot.child("Password").getValue();
 
-                    Room newroom = new Room(roomid,roomname,player,key_bl,roompwd);
+                    Room newroom = new Room(roomid,roomname,player,key_bool,roompwd);
                     mArrayList.add(newroom);
                 }
             }

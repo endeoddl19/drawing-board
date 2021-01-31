@@ -18,6 +18,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Random;
+
 public class Create extends AppCompatActivity {
 
     private TextView roomname_tv,roompwd_tv,players_tv;
@@ -46,6 +48,8 @@ public class Create extends AppCompatActivity {
         create.setOnClickListener(new View.OnClickListener() {
 
             protected String roomname,roompwd,players;
+            protected int roomid;
+            protected boolean key;
 
             @Override
             public void onClick(View v) {
@@ -58,7 +62,11 @@ public class Create extends AppCompatActivity {
                     DB.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-
+                            roomid = (int)Math.random()*1000;
+                            if(roompwd!=null){
+                                key = true;
+                            }
+                            else key = false;
                         }
 
                         @Override
