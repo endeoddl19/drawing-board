@@ -33,14 +33,13 @@ import java.util.Dictionary;
 
 public class Menu extends AppCompatActivity {
 
-    private TextView room_id, room_name, players;
     private ImageView key;
     private LinearLayout room;
     private ArrayList<Room> mArrayList;
     private CustomAdapter mAdapter;
     DatabaseReference DB;
-    protected String roomname,player;
-    protected int roomid,roompwd;
+    protected String roomname,roompwd;
+    protected int roomid,curplayer,maxplayer;
     protected boolean key_bool;
 
     @Override
@@ -60,12 +59,13 @@ public class Menu extends AppCompatActivity {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren() ){
                     roomid = (Integer) dataSnapshot.child("Room_id").getValue();
                     roomname = (String) dataSnapshot.child("Room_name").getValue();
-                    player = (String) dataSnapshot.child("Players").getValue();
+                    curplayer = (int) dataSnapshot.child("curPlayers").getValue();
+                    maxplayer = (int) dataSnapshot.child("maxPlayers").getValue();
                     key_bool = (Boolean) dataSnapshot.child("Key").getValue();
-                    roompwd = (Integer) dataSnapshot.child("Password").getValue();
+                    roompwd = (String) dataSnapshot.child("Password").getValue();
 
-                    Room newroom = new Room(roomid,roomname,player,key_bool,roompwd);
-                    mArrayList.add(newroom);
+                    Room room = new Room(roomid,roomname,curplayer,maxplayer,key_bool,roompwd);
+                    mArrayList.add(room);
                 }
             }
 
@@ -75,10 +75,6 @@ public class Menu extends AppCompatActivity {
             }
         });
 
-        room = findViewById(R.id.room);
-        room_id = findViewById(R.id.room_id);
-        room_name = findViewById(R.id.room_name);
-
         mArrayList = new ArrayList<>();
         mAdapter = new CustomAdapter( mArrayList);
         mRecyclerView.setAdapter(mAdapter);
@@ -87,7 +83,7 @@ public class Menu extends AppCompatActivity {
                 mLinearLayoutManager.getOrientation());
         mRecyclerView.addItemDecoration(dividerItemDecoration);
 
-        Button buttonInsert = (Button)findViewById(R.id.create);
+        Button buttonInsert = findViewById(R.id.create);
         buttonInsert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

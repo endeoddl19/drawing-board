@@ -23,10 +23,13 @@ import java.util.Random;
 public class Create extends AppCompatActivity {
 
     private TextView roomname_tv,roompwd_tv,players_tv;
-    private EditText roomname_et,roompwe_et;
+    private EditText roomname_et,roompwd_et;
     private Button four,five,six,seven,create;
-    private int player_cnt = 0;
     DatabaseReference DB;
+
+    protected String roomname,roompwd;
+    protected int roomid,curplayers,maxplayers;
+    protected boolean key;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +39,7 @@ public class Create extends AppCompatActivity {
         roomname_tv = findViewById(R.id.roomname_tv);
         roomname_et = findViewById(R.id.roomname_et);
         roompwd_tv = findViewById(R.id.roompwd_tv);
-        roompwe_et = findViewById(R.id.roompwd_et);
+        roompwd_et = findViewById(R.id.roompwd_et);
         four = findViewById(R.id.four_btn);
         five = findViewById(R.id.five_btn);
         six = findViewById(R.id.six_btn);
@@ -47,26 +50,20 @@ public class Create extends AppCompatActivity {
 
         create.setOnClickListener(new View.OnClickListener() {
 
-            protected String roomname,roompwd,players;
-            protected int roomid;
-            protected boolean key;
-
             @Override
             public void onClick(View v) {
                 roomname = roomname_et.getText().toString();
-                roompwd = roompwe_et.getText().toString();
-                if(roomname ==null&&player_cnt==0){
+                roompwd = roompwd_et.getText().toString();
+                if(roomname ==null&&maxplayers==0){
                     Toast.makeText(getApplicationContext(),"정보가 충분하지 않습니다", Toast.LENGTH_LONG).show();
                 }
                 else{
                     DB.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            roomid = (int)Math.random()*1000;
-                            if(roompwd!=null){
-                                key = true;
-                            }
-                            else key = false;
+                            roomid = (int)(Math.random()*1000);
+                            key = roompwd != null;
+                            curplayers=1;
                         }
 
                         @Override
@@ -74,6 +71,11 @@ public class Create extends AppCompatActivity {
 
                         }
                     });
+
+                    Room newroom = new Room(roomid,roomname,curplayers,maxplayers,key,roompwd);
+
+                    DB.push().setValue(newroom);
+
                     Intent intent = new Intent(getApplicationContext(), Menu.class);
                     startActivity(intent);
                 }
@@ -83,16 +85,16 @@ public class Create extends AppCompatActivity {
 
     public void selectPlayers(Button button){
         if(button == four){
-            player_cnt = 4;
+            maxplayers = 4;
         }
         else if(button == five){
-            player_cnt = 5;
+            maxplayers = 5;
         }
         else if(button == six){
-            player_cnt = 6;
+            maxplayers = 6;
         }
         else if(button == seven){
-            player_cnt = 7;
+            maxplayers = 7;
         }
     }
 }

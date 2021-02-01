@@ -4,22 +4,25 @@ public class Room {
 
     private int Room_id;
     private String Room_name;
-    private String Players;
+    private int curPlayers;
+    private int maxPlayers;
     private boolean Key;
-    private int Password;
+    private String Password;
 
     public Room(){
         this.Room_id = 00000;
         this.Room_name = "돌려돌려 그림판";
-        this.Players = "0 / 0";
+        this.curPlayers = 0;
+        this.maxPlayers = 0;
         this.Key = false;
-        this.Password = 0;
+        this.Password = "0";
     }
 
-    public Room(int room_id, String room_name, String players, boolean key, int password) {
+    public Room(int room_id, String room_name, int curplayers, int maxplayers, boolean key, String password) {
         this.Room_id = room_id;
         this.Room_name = room_name;
-        this.Players = players;
+        this.curPlayers = curplayers;
+        this.maxPlayers = maxplayers;
         this.Key = key;
         this.Password = password;
     }
@@ -40,23 +43,31 @@ public class Room {
         Room_name = room_name;
     }
 
-    public String getPlayers() {
-        return Players;
+    public int getcurPlayers() {
+        return curPlayers;
     }
 
-    public void setPlayers(String players) {
-        Players = players;
+    public void setcurPlayers(int curplayers) {
+        curPlayers = curplayers;
+    }
+
+    public int getmaxPlayers() {
+        return maxPlayers;
+    }
+
+    public void setmaxPlayers(int maxplayers) {
+        maxPlayers = maxplayers;
     }
 
     public boolean isKey() { return Key; }
 
     public void setKey(boolean key) { this.Key = key; }
 
-    public int getPassword() {
+    public String getPassword() {
         return Password;
     }
 
-    public void setPassword(int password) {
+    public void setPassword(String password) {
         Password = password;
     }
 }

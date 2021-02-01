@@ -26,6 +26,11 @@ public class LaunchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launch);
 
+        Room baseroom = new Room();
+
+        DB = FirebaseDatabase.getInstance().getReference("room");
+        DB.setValue(baseroom);
+
         new Handler().postDelayed(()->{
                 startActivity(new Intent(this, Menu.class));
                 finish();
