@@ -38,9 +38,9 @@ public class Menu extends AppCompatActivity {
     private ArrayList<Room> mArrayList;
     private CustomAdapter mAdapter;
     DatabaseReference DB;
-    protected String roomname,roompwd;
-    protected int roomid,curplayer,maxplayer;
-    protected boolean key_bool;
+    private String roomname,roompwd,players,roomid;
+    private long curplayer,maxplayer;
+    private boolean key_bool;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,7 @@ public class Menu extends AppCompatActivity {
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.room_list);
         LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
+        mArrayList = new ArrayList<>();
 
         DB = FirebaseDatabase.getInstance().getReference("room");
         DB.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -57,26 +58,25 @@ public class Menu extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 mArrayList.clear();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren() ){
-                    roomid = (Integer) dataSnapshot.child("Room_id").getValue();
-                    roomname = (String) dataSnapshot.child("Room_name").getValue();
-                    curplayer = (int) dataSnapshot.child("curPlayers").getValue();
-                    maxplayer = (int) dataSnapshot.child("maxPlayers").getValue();
-                    key_bool = (Boolean) dataSnapshot.child("Key").getValue();
-                    roompwd = (String) dataSnapshot.child("Password").getValue();
-
-                    Room room = new Room(roomid,roomname,curplayer,maxplayer,key_bool,roompwd);
+                    roomid = dataSnapshot.getKey();
+                    roomname = (String)snapshot.child(roomid).child("room_name").getValue();
+                    roompwd = (String)snapshot.child(roomid).child("password").getValue();
+                    curplayer = (long)snapshot.child(roomid).child("curPlayers").getValue();
+                    maxplayer = (long)snapshot.child(roomid).child("maxPlayers").getValue();
+                    key_bool = (boolean)snapshot.child(roomid).child("key").getValue();
+                    players = curplayer + " / " + maxplayer;
+                    Room room = new Room(roomname,curplayer,maxplayer,players,key_bool,roompwd);
                     mArrayList.add(room);
                 }
+                mAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
 
-        mArrayList = new ArrayList<>();
-        mAdapter = new CustomAdapter( mArrayList);
+        mAdapter = new CustomAdapter(mArrayList);
         mRecyclerView.setAdapter(mAdapter);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mRecyclerView.getContext(),

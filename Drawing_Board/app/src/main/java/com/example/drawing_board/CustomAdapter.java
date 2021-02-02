@@ -47,12 +47,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
 
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder viewholder, int position) {
-        int curplayer,maxplayer;
+        long curplayer,maxplayer;
 
         curplayer = mList.get(position).getcurPlayers();
         maxplayer = mList.get(position).getmaxPlayers();
         String str_players = curplayer + " / " + maxplayer;
-        viewholder.room_id.setText(mList.get(position).getRoom_id());
         viewholder.room_name.setText(mList.get(position).getRoom_name());
         viewholder.players.setText(str_players);
         if(!mList.get(position).isKey()) {

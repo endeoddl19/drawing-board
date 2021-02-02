@@ -45,7 +45,7 @@
                 android:textColor="#3d65d3"
                 android:fontFamily="@font/kanit_bold"
                 android:layout_gravity="center_vertical"
-                android:textSize="25sp"/>
+                android:textSize="20sp"/>
             <TextView
                 android:id="@+id/players"
                 android:layout_width="0dp"

@@ -10,7 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Drawing_Board">
-        <activity android:name=".Create"></activity>
+        <activity android:name=".Create"
+            android:theme="@style/Transparent">
+        </activity>
         <activity android:name=".Menu" />
         <activity android:name=".LaunchActivity">
             <intent-filter>

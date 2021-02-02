@@ -22,13 +22,12 @@ import java.util.Random;
 
 public class Create extends AppCompatActivity {
 
-    private TextView roomname_tv,roompwd_tv,players_tv;
     private EditText roomname_et,roompwd_et;
     private Button four,five,six,seven,create;
     DatabaseReference DB;
 
-    protected String roomname,roompwd;
-    protected int roomid,curplayers,maxplayers;
+    protected String roomname,roompwd,roomid,players;
+    protected int curplayers,maxplayers;
     protected boolean key;
 
     @Override
@@ -36,9 +35,7 @@ public class Create extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
 
-        roomname_tv = findViewById(R.id.roomname_tv);
         roomname_et = findViewById(R.id.roomname_et);
-        roompwd_tv = findViewById(R.id.roompwd_tv);
         roompwd_et = findViewById(R.id.roompwd_et);
         four = findViewById(R.id.four_btn);
         five = findViewById(R.id.five_btn);
@@ -61,9 +58,11 @@ public class Create extends AppCompatActivity {
                     DB.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            roomid = (int)(Math.random()*1000);
+                            int random = (int)(Math.random()*1000);
+                            roomid = Integer.toString(random);
                             key = roompwd != null;
                             curplayers=1;
+                            players = curplayers + " / " + maxplayers;
                         }
 
                         @Override
@@ -72,9 +71,8 @@ public class Create extends AppCompatActivity {
                         }
                     });
 
-                    Room newroom = new Room(roomid,roomname,curplayers,maxplayers,key,roompwd);
-
-                    DB.push().setValue(newroom);
+                    Room newroom = new Room(roomname,curplayers,maxplayers,players,key,roompwd);
+                    DB.push().child(roomid).setValue(newroom);
 
                     Intent intent = new Intent(getApplicationContext(), Menu.class);
                     startActivity(intent);
@@ -83,17 +81,17 @@ public class Create extends AppCompatActivity {
         });
     }
 
-    public void selectPlayers(Button button){
-        if(button == four){
+    public void selectPlayers(View view){
+        if(view == four){
             maxplayers = 4;
         }
-        else if(button == five){
+        else if(view == five){
             maxplayers = 5;
         }
-        else if(button == six){
+        else if(view == six){
             maxplayers = 6;
         }
-        else if(button == seven){
+        else if(view == seven){
             maxplayers = 7;
         }
     }

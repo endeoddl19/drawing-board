@@ -29,7 +29,7 @@ public class LaunchActivity extends AppCompatActivity {
         Room baseroom = new Room();
 
         DB = FirebaseDatabase.getInstance().getReference("room");
-        DB.setValue(baseroom);
+        DB.child("000").setValue(baseroom);
 
         new Handler().postDelayed(()->{
                 startActivity(new Intent(this, Menu.class));
