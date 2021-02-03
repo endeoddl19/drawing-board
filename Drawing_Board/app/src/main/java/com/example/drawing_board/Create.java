@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -54,29 +55,17 @@ public class Create extends AppCompatActivity {
                 if(roomname ==null&&maxplayers==0){
                     Toast.makeText(getApplicationContext(),"정보가 충분하지 않습니다", Toast.LENGTH_LONG).show();
                 }
-                else{
-                    DB.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            int random = (int)(Math.random()*1000);
-                            roomid = Integer.toString(random);
-                            key = roompwd != null;
-                            curplayers=1;
-                            players = curplayers + " / " + maxplayers;
-                        }
+                int random = (int)(Math.random()*1000);
+                roomid = Integer.toString(random);
+                if(roompwd != null) {key=true;}
+                curplayers=1;
+                players = (curplayers + " / " + maxplayers);
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
+                Room newroom = new Room(roomid,roomname,curplayers,maxplayers,players,key,roompwd);
+                DB.child(roomid).setValue(newroom);
 
-                        }
-                    });
-
-                    Room newroom = new Room(roomname,curplayers,maxplayers,players,key,roompwd);
-                    DB.push().child(roomid).setValue(newroom);
-
-                    Intent intent = new Intent(getApplicationContext(), Menu.class);
-                    startActivity(intent);
-                }
+                Intent intent = new Intent(getApplicationContext(), Menu.class);
+                startActivity(intent);
             }
         });
     }
@@ -84,15 +73,31 @@ public class Create extends AppCompatActivity {
     public void selectPlayers(View view){
         if(view == four){
             maxplayers = 4;
+            view.setBackgroundColor(Color.parseColor("#AA1ABD"));
+            five.setBackgroundColor(Color.parseColor("#3d65d3"));
+            six.setBackgroundColor(Color.parseColor("#3d65d3"));
+            seven.setBackgroundColor(Color.parseColor("#3d65d3"));
         }
         else if(view == five){
             maxplayers = 5;
+            view.setBackgroundColor(Color.parseColor("#AA1ABD"));
+            six.setBackgroundColor(Color.parseColor("#3d65d3"));
+            four.setBackgroundColor(Color.parseColor("#3d65d3"));
+            seven.setBackgroundColor(Color.parseColor("#3d65d3"));
         }
         else if(view == six){
             maxplayers = 6;
+            view.setBackgroundColor(Color.parseColor("#AA1ABD"));
+            five.setBackgroundColor(Color.parseColor("#3d65d3"));
+            four.setBackgroundColor(Color.parseColor("#3d65d3"));
+            seven.setBackgroundColor(Color.parseColor("#3d65d3"));
         }
         else if(view == seven){
             maxplayers = 7;
+            view.setBackgroundColor(Color.parseColor("#AA1ABD"));
+            five.setBackgroundColor(Color.parseColor("#3d65d3"));
+            six.setBackgroundColor(Color.parseColor("#3d65d3"));
+            four.setBackgroundColor(Color.parseColor("#3d65d3"));
         }
     }
 }

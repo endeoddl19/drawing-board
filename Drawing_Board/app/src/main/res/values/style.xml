@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Transparent" parent="@style/Theme.AppCompat.NoActionBar">
-        <item name="windowNoTitle">false</item>
+    <style name="Transparent" parent="@style/Theme.AppCompat">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
         <!-- 투명정도를 나타내는 색-->
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:colorBackgroundCacheHint">@null</item>

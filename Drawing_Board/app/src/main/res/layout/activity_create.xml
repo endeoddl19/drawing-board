@@ -33,6 +33,7 @@
                     android:layout_weight=".45"
                     android:fontFamily="@font/blackhansans_regular"
                     android:text="방 이름 : "
+                    android:textColor="#3d65d3"
                     android:gravity="left|center_vertical"
                     android:textSize="35sp" />
                 <EditText
@@ -41,6 +42,7 @@
                     android:layout_weight=".55"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:textColor="#3d65d3"
                     android:textSize="35sp" />
             </LinearLayout>
 
@@ -55,6 +57,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight=".45"
                     android:text="비밀번호 : "
+                    android:textColor="#3d65d3"
                     android:gravity="left|center_vertical"
                     android:textSize="35sp"
                     android:fontFamily="@font/blackhansans_regular"/>
@@ -63,6 +66,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight=".55"
+                    android:textColor="#3d65d3"
                     android:gravity="center"
                     android:textSize="35sp"/>
             </LinearLayout>
@@ -76,6 +80,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight=".4"
+                    android:textColor="#3d65d3"
                     android:gravity="left|center_vertical"
                     android:text="인원수 : "
                     android:textSize="35sp"
@@ -88,6 +93,7 @@
                     android:onClick="selectPlayers"
                     android:textSize="25sp"
                     android:fontFamily="@font/kanit_bold"
+                    android:background="#3d65d3"
                     android:layout_margin="3dp"
                     android:layout_weight=".15"/>
                 <Button
@@ -98,6 +104,7 @@
                     android:onClick="selectPlayers"
                     android:textSize="25sp"
                     android:fontFamily="@font/kanit_bold"
+                    android:background="#3d65d3"
                     android:layout_margin="3dp"
                     android:layout_weight=".15"/>
                 <Button
@@ -108,6 +115,7 @@
                     android:onClick="selectPlayers"
                     android:textSize="25sp"
                     android:fontFamily="@font/kanit_bold"
+                    android:background="#3d65d3"
                     android:layout_margin="3dp"
                     android:layout_weight=".15"/>
                 <Button
@@ -118,6 +126,7 @@
                     android:onClick="selectPlayers"
                     android:textSize="25sp"
                     android:fontFamily="@font/kanit_bold"
+                    android:background="#3d65d3"
                     android:layout_margin="3dp"
                     android:layout_weight=".15"/>
             </LinearLayout>
@@ -125,7 +134,10 @@
                 android:id="@+id/create_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="10dp"
                 android:text="방 만들기"
+                android:background="#3d65d3"
                 android:textSize="40sp"
                 android:textColor="#FFFFFF"
                 android:fontFamily="@font/blackhansans_regular"/>

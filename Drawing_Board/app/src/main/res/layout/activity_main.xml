@@ -22,7 +22,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight=".225"
-                android:text="11023"
+                android:text="000"
                 android:gravity="center"
                 android:textColor="#ffffff"
                 android:fontFamily="@font/kanit_bold"
@@ -33,7 +33,7 @@
                 android:layout_width="0dp"
                 android:layout_weight=".55"
                 android:layout_height="match_parent"
-                android:text="님만 오면 ㄱ"
+                android:text="돌려돌려 그림판"
                 android:gravity="center"
                 android:textColor="#ffffff"
                 android:fontFamily="@font/kanit_bold"
@@ -50,19 +50,21 @@
                 android:textColor="#ffffff"
                 android:textSize="25sp"/>
         </LinearLayout>
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:orientation="vertical"
             android:layout_weight=".9"
             android:padding="5dp"
             android:layout_margin="10dp"
             android:background="@drawable/main_bound"
             android:weightSum="1">
             <LinearLayout
+                android:id="@+id/uplayer"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".1"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_margin="5dp"
                 android:padding="5dp"
                 android:orientation="horizontal"
                 android:background="#ffffff"
@@ -72,56 +74,92 @@
                     android:id="@+id/word"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight=".4"
+                    android:layout_weight=".6"
                     android:text="보조배터리"
                     android:gravity="center"
                     android:padding="5dp"
                     android:textColor="#000000"
                     android:fontFamily="@font/kanit_bold"
-                    android:textSize="25sp"
+                    android:textSize="30sp"
                     android:background="@drawable/roundbutton"/>
+                <TextView
+                    android:id="@+id/timer"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="00:00"
+                    android:textSize="30sp"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:fontFamily="@font/blackhansans_regular"
+                    android:layout_weight=".4"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/tools"
+                android:layout_width="60dp"
+                android:layout_height="340dp"
+                android:orientation="vertical"
+                android:layout_below="@id/uplayer"
+                android:layout_alignParentRight="true">
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".05"/>
                 <ImageButton
                     android:id="@+id/pancel"
-                    android:layout_margin="5dp"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight=".15"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".2"
                     android:background="@drawable/pancel"/>
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".05"/>
                 <ImageButton
                     android:id="@+id/eraser"
-                    android:layout_margin="5dp"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight=".15"
+                    android:layout_margintop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".2"
                     android:background="@drawable/eraser"/>
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".05"/>
                 <ImageButton
                     android:id="@+id/save"
-                    android:layout_margin="5dp"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight=".15"
+                    android:layout_margintop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".2"
                     android:background="@drawable/save"/>
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".05"/>
                 <ImageButton
                     android:id="@+id/clear"
-                    android:layout_margin="5dp"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight=".15"
+                    android:layout_margintop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight=".2"
                     android:background="@drawable/clear"/>
             </LinearLayout>
             <com.example.drawing_board.DrawingView
                 android:id="@+id/drawing"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".8"
-                android:background="#FFFFFF"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:layout_below="@id/uplayer"
+                android:layout_centerInParent="true"
+                android:layout_toLeftOf="@id/tools"
+                android:layout_above="@id/paint_colors"/>
             <LinearLayout
                 android:id="@+id/paint_colors"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight=".1"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:background="#ffffff"
+                android:layout_alignParentBottom="true"
                 android:gravity="center">
                 <ImageButton
                     android:onClick="paintClicked"
@@ -167,6 +205,6 @@
                     android:background="#FF00FF"
                     android:tag="#FF00FF"/>
             </LinearLayout>
-        </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

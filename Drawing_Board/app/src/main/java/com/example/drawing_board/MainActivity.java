@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.MenuItem;
@@ -20,6 +21,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageButton currPaint, pancel,clear,erase,save;
     private DrawingView drawView;
     private TextView word;
+    private String roomid;
+    private int turn,curplayers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         clear.setOnClickListener(this);
         erase.setOnClickListener(this);
         save.setOnClickListener(this);
+
+        Intent intent = new Intent();
+        roomid = intent.getStringExtra("roomid");
+        curplayers = intent.getIntExtra("curplayers",1);
+        turn = 1;
     }
 
     public void paintClicked(View view){

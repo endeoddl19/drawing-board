@@ -17,7 +17,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
 
     private ArrayList<Room> mList;
 
-
     public class CustomViewHolder extends RecyclerView.ViewHolder {
         protected TextView room_id,room_name,players;
         protected ImageView key;
@@ -49,6 +48,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     public void onBindViewHolder(@NonNull CustomViewHolder viewholder, int position) {
         long curplayer,maxplayer;
 
+        viewholder.room_id.setText(mList.get(position).getRoom_id());
         curplayer = mList.get(position).getcurPlayers();
         maxplayer = mList.get(position).getmaxPlayers();
         String str_players = curplayer + " / " + maxplayer;

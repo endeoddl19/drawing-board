@@ -65,7 +65,7 @@ public class Menu extends AppCompatActivity {
                     maxplayer = (long)snapshot.child(roomid).child("maxPlayers").getValue();
                     key_bool = (boolean)snapshot.child(roomid).child("key").getValue();
                     players = curplayer + " / " + maxplayer;
-                    Room room = new Room(roomname,curplayer,maxplayer,players,key_bool,roompwd);
+                    Room room = new Room(roomid,roomname,curplayer,maxplayer,players,key_bool,roompwd);
                     mArrayList.add(room);
                 }
                 mAdapter.notifyDataSetChanged();
@@ -90,6 +90,13 @@ public class Menu extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), Create.class);
                 startActivity(intent);
                 }
+        });
+
+        room.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
         });
     }
 }

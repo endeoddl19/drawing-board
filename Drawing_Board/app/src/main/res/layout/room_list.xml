@@ -9,15 +9,6 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <TextView
-            android:id="@+id/room_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="11023"
-            android:textSize="20sp"
-            android:fontFamily="@font/kanit_bold"
-            android:layout_alignLeft="@+id/room"
-            android:layout_marginBottom="5dp"/>
         <LinearLayout
             android:id="@+id/room"
             android:layout_width="match_parent"
@@ -25,35 +16,37 @@
             android:weightSum="1"
             android:background="@drawable/roundbutton"
             android:gravity="center"
-            android:layout_below="@+id/room_id"
             android:padding="15dp">
-
-            <ImageView
+            <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight=".2"
+                android:text="000"
                 android:gravity="center"
+                android:textColor="#555555"
+                android:fontFamily="@font/kanit_bold"
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/question"/>
+                android:textSize="20sp"/>
             <TextView
                 android:id="@+id/room_name"
                 android:layout_width="0dp"
-                android:layout_weight=".5"
+                android:layout_weight=".45"
                 android:layout_height="wrap_content"
                 android:text="님만 오면 ㄱ"
                 android:gravity="center"
                 android:textColor="#3d65d3"
                 android:fontFamily="@font/kanit_bold"
                 android:layout_gravity="center_vertical"
-                android:textSize="20sp"/>
+                android:textSize="25sp"/>
             <TextView
                 android:id="@+id/players"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight=".2"
+                android:layout_weight=".25"
                 android:text="2 / 5"
                 android:fontFamily="@font/blackhansans_regular"
                 android:gravity="center"
+                android:textColor="#555555"
                 android:textSize="25sp"/>
             <ImageView
                 android:id="@+id/key"
