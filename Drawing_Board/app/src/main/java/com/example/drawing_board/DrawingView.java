@@ -17,11 +17,11 @@ import android.view.View;
 
 public class DrawingView extends View {
 
-    private Path drawPath;
+    private Path drawPath; // 사용자가 원하는대로 그리기 위해
     private boolean erase = false;
-    private Paint drawPaint, canvasPaint;
+    private Paint drawPaint, canvasPaint; // 색연필
     private int paintColor = 0xFF660000;
-    private Canvas drawCanvas;
+    private Canvas drawCanvas; // 도화지
     private Bitmap canvasBitmap;
     private float brushSize, lastBrushSize;
 

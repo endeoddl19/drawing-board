@@ -14,6 +14,7 @@
         android:background="@android:color/transparent">
 
         <LinearLayout
+            android:id="@+id/create_lilout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -41,6 +42,7 @@
                     android:layout_width="0dp"
                     android:layout_weight=".55"
                     android:layout_height="wrap_content"
+                    android:text=""
                     android:gravity="center"
                     android:textColor="#3d65d3"
                     android:textSize="35sp" />
@@ -68,6 +70,7 @@
                     android:layout_weight=".55"
                     android:textColor="#3d65d3"
                     android:gravity="center"
+                    android:text=""
                     android:textSize="35sp"/>
             </LinearLayout>
 
@@ -91,7 +94,7 @@
                     android:layout_height="wrap_content"
                     android:text="4"
                     android:onClick="selectPlayers"
-                    android:textSize="25sp"
+                    android:textSize="28sp"
                     android:fontFamily="@font/kanit_bold"
                     android:background="#3d65d3"
                     android:layout_margin="3dp"
@@ -102,7 +105,7 @@
                     android:layout_height="wrap_content"
                     android:text="5"
                     android:onClick="selectPlayers"
-                    android:textSize="25sp"
+                    android:textSize="28sp"
                     android:fontFamily="@font/kanit_bold"
                     android:background="#3d65d3"
                     android:layout_margin="3dp"
@@ -113,7 +116,7 @@
                     android:layout_height="wrap_content"
                     android:text="6"
                     android:onClick="selectPlayers"
-                    android:textSize="25sp"
+                    android:textSize="28sp"
                     android:fontFamily="@font/kanit_bold"
                     android:background="#3d65d3"
                     android:layout_margin="3dp"
@@ -124,23 +127,49 @@
                     android:layout_height="wrap_content"
                     android:text="7"
                     android:onClick="selectPlayers"
-                    android:textSize="25sp"
+                    android:textSize="28sp"
                     android:fontFamily="@font/kanit_bold"
                     android:background="#3d65d3"
                     android:layout_margin="3dp"
                     android:layout_weight=".15"/>
             </LinearLayout>
-            <Button
-                android:id="@+id/create_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:orientation="horizontal"
                 android:layout_marginTop="10dp"
-                android:padding="10dp"
-                android:text="방 만들기"
-                android:background="#3d65d3"
-                android:textSize="40sp"
-                android:textColor="#FFFFFF"
-                android:fontFamily="@font/blackhansans_regular"/>
+                android:weightSum="1">
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".13"/>
+                <Button
+                    android:id="@+id/create_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".6"
+                    android:padding="5dp"
+                    android:text="방 만들기"
+                    android:background="#3d65d3"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="40sp"
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="@font/blackhansans_regular"/>
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".12"/>
+                <Button
+                    android:id="@+id/back_create"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".15"
+                    android:layout_above="@id/create_lilout"
+                    android:layout_alignRight="@id/create_lilout"
+                    android:background="@drawable/back"/>
+            </LinearLayout>
+
         </LinearLayout>
     </RelativeLayout>
 
