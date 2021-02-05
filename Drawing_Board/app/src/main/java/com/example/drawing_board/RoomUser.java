@@ -13,7 +13,16 @@ import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 
+import java.util.HashMap;
+import java.util.List;
+
 public class RoomUser {
-    private int num;
-    private Bitmap canvasBitmap;
+    private int cnt,playernum;
+    private List<HashMap<String,Bitmap>> list;
+
+    public RoomUser(int cnt, int playernum, List<HashMap<String, Bitmap>> list) {
+        this.cnt = cnt;
+        this.playernum = playernum;
+        this.list = list;
+    }
 }

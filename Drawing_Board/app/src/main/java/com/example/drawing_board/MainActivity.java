@@ -21,8 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageButton currPaint, pancel,clear,erase,save;
     private DrawingView drawView;
     private TextView word;
-    private String roomid;
-    private int turn,curplayers;
+    private int turn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +41,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         save.setOnClickListener(this);
 
         Intent intent = new Intent();
-        roomid = intent.getStringExtra("roomid");
-        curplayers = intent.getIntExtra("curplayers",1);
         turn = 1;
     }
 

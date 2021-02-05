@@ -45,6 +45,8 @@
                     android:text=""
                     android:gravity="center"
                     android:textColor="#3d65d3"
+                    android:maxLength="10"
+                    android:inputType="text"
                     android:textSize="35sp" />
             </LinearLayout>
 
@@ -70,6 +72,8 @@
                     android:layout_weight=".55"
                     android:textColor="#3d65d3"
                     android:gravity="center"
+                    android:maxLength="7"
+                    android:inputType="numberPassword"
                     android:text=""
                     android:textSize="35sp"/>
             </LinearLayout>

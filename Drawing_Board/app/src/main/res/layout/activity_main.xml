@@ -11,45 +11,12 @@
         android:weightSum="1"
         android:background="#3d65f3"
         android:orientation="vertical">
-        <LinearLayout
+        <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".08"
+            android:layout_weight=".05"
             android:orientation="horizontal"
-            android:gravity="center">
-            <TextView
-                android:id="@+id/room_id"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".225"
-                android:text="000"
-                android:gravity="center"
-                android:textColor="#ffffff"
-                android:fontFamily="@font/kanit_bold"
-                android:layout_gravity="center_vertical"
-                android:textSize="20sp"/>
-            <TextView
-                android:id="@+id/room_name"
-                android:layout_width="0dp"
-                android:layout_weight=".55"
-                android:layout_height="match_parent"
-                android:text="돌려돌려 그림판"
-                android:gravity="center"
-                android:textColor="#ffffff"
-                android:fontFamily="@font/kanit_bold"
-                android:layout_gravity="center_vertical"
-                android:textSize="25sp"/>
-            <TextView
-                android:id="@+id/players"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".225"
-                android:text="2 / 5"
-                android:fontFamily="@font/blackhansans_regular"
-                android:gravity="center"
-                android:textColor="#ffffff"
-                android:textSize="25sp"/>
-        </LinearLayout>
+            android:gravity="center"/>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -207,6 +174,12 @@
                     android:background="#FF00FF"
                     android:tag="#FF00FF"/>
             </LinearLayout>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".05"
+                android:orientation="horizontal"
+                android:gravity="center"/>
         </RelativeLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -73,6 +73,9 @@ public class Create extends AppCompatActivity {
                     DB.child(roomid).setValue(newroom);
 
                     Intent intent = new Intent(getApplicationContext(), Menu.class);
+                    intent.putExtra("playernum",1);
+                    intent.putExtra("maxplayers",maxplayers);
+                    intent.putExtra("roomid",roomid);
                     startActivity(intent);
                 }
             }

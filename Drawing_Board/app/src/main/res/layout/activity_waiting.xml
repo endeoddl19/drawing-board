@@ -6,9 +6,37 @@
     android:layout_height="match_parent"
     tools:context=".Waiting">
 
-    <ImageView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/palette"/>
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/room_id_waiting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="000"
+            android:textColor="#975329"
+            android:textSize="45sp"
+            android:fontFamily="@font/blackhansans_regular"
+            android:layout_above="@id/players_waiting"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:layout_marginBottom="100dp"/>
+        <ImageView
+            android:id="@+id/palatte"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:src="@drawable/palette1"/>
+        <TextView
+            android:id="@+id/players_waiting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text=" 1 / 5"
+            android:textSize="60sp"
+            android:textColor="#FFFF00"
+            android:fontFamily="@font/blackhansans_regular"/>
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
