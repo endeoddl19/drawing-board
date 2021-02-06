@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.TextView;
 
 public class Waiting extends AppCompatActivity {
@@ -26,6 +27,5 @@ public class Waiting extends AppCompatActivity {
         players = findViewById(R.id.players_waiting);
 
         roomid.setText(room_id);
-
     }
 }
