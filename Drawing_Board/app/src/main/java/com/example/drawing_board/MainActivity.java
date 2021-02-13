@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             drawView.setErase(true);
             drawView.setBrushSize(drawView.getLastBrushSize());
         }
-        if(v.getId()==R.id.clear){
+        if(v.getId()==R.id.clear){ // 그림판 초기화
             AlertDialog.Builder newDialog = new AlertDialog.Builder(this);
             newDialog.setTitle("New drawing");
             newDialog.setMessage("Strat new drawing?");
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             });
             newDialog.show();
         }
-        if(v.getId()==R.id.save){
+        if(v.getId()==R.id.save){ // 그림 저장
             AlertDialog.Builder saveDialog = new AlertDialog.Builder(this);
             saveDialog.setTitle("Save drawing");
             saveDialog.setMessage("Save drawing in gallery?");

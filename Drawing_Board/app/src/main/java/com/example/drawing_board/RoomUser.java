@@ -25,4 +25,28 @@ public class RoomUser {
         this.playernum = playernum;
         this.list = list;
     }
+
+    public int getCnt() {
+        return cnt;
+    }
+
+    public void setCnt(int cnt) {
+        this.cnt = cnt;
+    }
+
+    public int getPlayernum() {
+        return playernum;
+    }
+
+    public void setPlayernum(int playernum) {
+        this.playernum = playernum;
+    }
+
+    public List<HashMap<String, Bitmap>> getList() {
+        return list;
+    }
+
+    public void setList(List<HashMap<String, Bitmap>> list) {
+        this.list = list;
+    }
 }

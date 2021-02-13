@@ -57,6 +57,7 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 mArrayList.clear();
+                // 완탐하며 모든 방 정보 가져와서 recyclerview 리스트에 추가
                 for(DataSnapshot dataSnapshot : snapshot.getChildren() ){
                     roomid = dataSnapshot.getKey();
                     roomname = (String)snapshot.child(roomid).child("room_name").getValue();

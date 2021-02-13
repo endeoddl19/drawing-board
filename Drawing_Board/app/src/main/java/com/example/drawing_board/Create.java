@@ -54,25 +54,27 @@ public class Create extends AppCompatActivity {
             public void onClick(View v) {
                 roomname = roomname_et.getText().toString();
                 roompwd = roompwd_et.getText().toString();
-                if(roomname.equals("") || maxplayers == 0){
+                if(roomname.equals("") || maxplayers == 0){ // 방이름이나 인원 선택 안 했을 시
                     Toast.makeText(getApplicationContext(),"정보가 충분하지 않습니다", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(getApplicationContext(), Create.class);
                     startActivity(intent);
                 }
                 else {
-                    int random = (int) (Math.random() * 1000);
+                    int random = (int) (Math.random() * 1000); // 방 번호 랜덤값
                     roomid = Integer.toString(random);
                     check(roomid);
-                    if (!roompwd.equals("")) {
+                    if (!roompwd.equals("")) { // pwd 존재 시 key 이미지 띄움
                         key = true;
                     }
                     curplayers = 1;
                     players = (curplayers + " / " + maxplayers);
 
+                    // DB에 새로운 방 추가
                     Room newroom = new Room(roomid, roomname, curplayers, maxplayers, players, key, roompwd);
                     DB.child(roomid).setValue(newroom);
 
-                    Intent intent = new Intent(getApplicationContext(), Menu.class);
+                    // 대기실로 넘겨주며 방 생성
+                    Intent intent = new Intent(getApplicationContext(), Waiting.class);
                     intent.putExtra("playernum",1);
                     intent.putExtra("maxplayers",maxplayers);
                     intent.putExtra("roomid",roomid);
@@ -81,7 +83,7 @@ public class Create extends AppCompatActivity {
             }
         });
 
-        back_create.setOnClickListener(new View.OnClickListener() {
+        back_create.setOnClickListener(new View.OnClickListener() { // 뒤로가기 버튼
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Menu.class);
@@ -90,7 +92,7 @@ public class Create extends AppCompatActivity {
         });
     }
 
-    public void selectPlayers(View view){
+    public void selectPlayers(View view){ // 터치 시 알 수 있게
         if(view == four){
             maxplayers = 4;
             view.setBackgroundColor(Color.parseColor("#AA1ABD"));
@@ -121,7 +123,7 @@ public class Create extends AppCompatActivity {
         }
     }
 
-    public void check(String room_id){
+    public void check(String room_id){ // 방 고유번호 중복 검사
         DB.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -130,7 +132,6 @@ public class Create extends AppCompatActivity {
                 Iterator<DataSnapshot> child = snapshot.getChildren().iterator();
 
                 while (child.hasNext()) {
-                    //존재할때
                     if (child.next().getKey().equals(room_id)) {
                         int random = (int)(Math.random()*1000);
                         roomid = Integer.toString(random);
